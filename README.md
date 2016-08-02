@@ -20,3 +20,14 @@ Aplicativo Multiplataforma
 
 ## Tecnologias
 Python
+
+## Estrutura
+	flask\
+		<virtual environment files>
+	app\
+		static\
+		templates\
+		__init__.py
+		views.py
+	tmp\
+	run.py

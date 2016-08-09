@@ -1,7 +1,40 @@
+<!-- extend base layout -->
 {% extends "base.html" %}
+
 {% block content %}
-    <h1>Hi, {{ user.nickname }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+
+<!--Page heading-->
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="h1-responsive">ChatterBot
+            <small class="text-muted">Chat</small>
+        </h1>
+    </div>
+</div>
+<!--/.Page heading-->
+<!--<hr>-->
+
+<!--<div class="card">-->
+<!--    <div class="card-header danger-color-dark white-text">
+        Chatterbot
+    </div>-->
+    <!--<div class="card-block">-->
+        <div class="chat" style="height: auto; margin-top: 100px; margin-bottom: 50px;">
+        <!--<div class="chat" >-->
+        <div class="messages" style="height: 80%; overflow-y: scroll;">
+                <div class="message">
+                    <div class="bot">
+                        Type something with "gif me funny cat" to see what happens ;)
+                    </div>
+                </div>
+            </div>
+            <div class="input">
+                <form action="#" id="chat" method="post">
+                    <input class="text" contenteditable="<%= true %>" placeholder="Type your message here..."></input>
+                </form>
+            </div>
+        </div>
+    <!--</div>-->
+<!--</div>-->
+
 {% endblock %}

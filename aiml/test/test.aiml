@@ -1,0 +1,15 @@
+<aiml>
+    <category>
+        <pattern>voce esta bem</pattern>
+        <template>ola! bom dia.</template>
+    </category>
+    <category>
+        <pattern>Ola</pattern>
+        <template>
+            <random>
+                <li>ola, bom dia.</li>
+                <li>bom dia.</li>
+            </random>
+        </template>
+    </category>
+</aiml>

@@ -1,0 +1,44 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<!--Page heading-->
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="h1-responsive">ChatterBot
+            <small class="text-muted">Chat</small>
+        </h1>
+    </div>
+</div>
+<!--/.Page heading-->
+<hr>
+
+<div class="chat">
+    <div class="messages">
+        <div class="message">
+            <div class="bot">
+                Type something with "gif me funny cat" to see what happens ;)
+            </div>
+        </div>
+    </div>
+    <div class="input">
+        <form action="#" id="chat" method="post">
+            <input class="text" contenteditable="<%= true %>" placeholder="Type your message here..."></input>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+<div class="card">
+    <div class="card-header danger-color-dark white-text">
+        Chatterbot
+    </div>
+    <div class="card-block">
+        <h4 class="card-title">Special title treatment</h4>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a class="btn btn-danger">Go somewhere</a>
+    </div>
+</div>
+

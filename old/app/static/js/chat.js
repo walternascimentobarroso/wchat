@@ -15,7 +15,7 @@ app = {
         });
     },
     move_scroll: function () {
-        $(".messages").animate({ scrollTop: $(".messages")[0].scrollHeight }, 3000);
+        $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight}, 3000);
     },
     send_message: function () {
         var msg;

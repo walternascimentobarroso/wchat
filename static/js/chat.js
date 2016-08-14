@@ -26,6 +26,15 @@ app = {
             return this.check(msg);
         }
     },
+    ajax_request: function (msg) {
+        $.ajax({
+            url: "http://localhost:5000/todo/api/v1.0/tasks",
+            success: function (result) {
+                console.log(result);
+                return app.bot_post("Wrong syntax ''gif me keyword''.");
+            }
+        });
+    },
     check: function (msg) {
         var keyword;
         if (msg.substring(0, 6) === "gif me") {
@@ -33,7 +42,7 @@ app = {
             keyword = keyword.replace(/[ ]/g, "+");
             return this.get_gif(keyword);
         } else {
-            return this.bot_post("Wrong syntax ''gif me keyword''.");
+            return this.ajax_request(msg);
         }
     },
     bot_post: function (msg) {

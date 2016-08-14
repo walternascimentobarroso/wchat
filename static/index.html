@@ -62,14 +62,49 @@
                     </div>
                     <div class="input">
                         <form action="#" id="chat" method="post">
-                            <input class="text" contenteditable="<%= true %>" placeholder="Type your message here..."></input>
+                            <input class="text" contenteditable="<%= true %>" id="mensagem" placeholder="Type your message here..."></input>
                         </form>
                     </div>
                 </div>
+                <button class="btn btn-success btn-lg" id="speakBtn">Falar</button>
             </div>
         </main>
 
         <!-- SCRIPTS -->
+        <script>
+            window.addEventListener('DOMContentLoaded', function () {
+                var inputMsg = document.querySelector('#mensagem');
+                var speakBtn = document.querySelector('#speakBtn');
+
+                // testa se o navegador suporta o reconhecimento de voz
+                if (window.SpeechRecognition || window.webkitSpeechRecognition) {
+
+                    // captura a voz
+                    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+
+                    var recognition = new SpeechRecognition();
+
+                    // inicia reconhecimento
+                    speakBtn.addEventListener('click', function (e) {
+                        recognition.start();
+                    }, false);
+
+                    // resultado do reconhecimento
+                    recognition.addEventListener('result', function (e) {
+                        var result = e.results[0][0].transcript;
+                        //console.log(result);
+                        inputMsg.value = result;
+                        if (result.toLowerCase() === 'luz') {
+                            document.body.classList.toggle('luz-apagada');
+                        }
+                        // window.location.href = 'http://' + result;
+                    }, false);
+                } else {
+                    alert('Este navegador não suporta esta funcionalidade ainda!');
+                }
+
+            }, false);
+        </script>
         <!-- JQuery -->
         <script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
         <!-- Bootstrap tooltips -->

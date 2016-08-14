@@ -5,24 +5,22 @@ from flask import jsonify
 from flask import make_response
 from flask import request
 from flask import url_for
+import aiml, os.path
 
-app = Flask(__name__, static_url_path = "")
+k = aiml.Kernel()
+
+if os.path.isfile("bot_brain.brn"):
+    k.bootstrap(brainFile = "bot_brain.brn")
+else:
+    k.bootstrap(learnFiles = "std-startup.xml", commands = "load aiml b")
+    k.saveBrain("bot_brain.brn")
+
+app = Flask(__name__, static_url_path="")
 
 tasks = [
-    {
-        'id': 1,
-        'title': u'Buy groceries',
-        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol', 
-        'done': False
-    },
-    {
-        'id': 2,
-        'title': u'Learn Python',
-        'description': u'Need to find a good Python tutorial on the web', 
-        'done': False
-    }
+    {'description': u'estou bem e voce?'},
+    {'description': u'legal'}
 ]
-
 
 @app.errorhandler(404)
 def not_found(error):
@@ -37,7 +35,8 @@ def get_task(task_id):
 
 @app.route('/todo/api/v1.0/tasks', methods=['GET'])
 def get_tasks():
-    return jsonify({'tasks': [make_public_task(task) for task in tasks]})
+    return jsonify({'tasks': k.respond("hello")})
+# return jsonify({'tasks': [make_public_task(task) for task in tasks]})
 
 @app.route('/todo/api/v1.0/tasks', methods=['POST'])
 def create_task():

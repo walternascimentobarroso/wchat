@@ -28,17 +28,20 @@ app = {
     },
     ajax_request: function (msg) {
         $.ajax({
-            url: "http://localhost:5000/todo/api/v1.0/tasks",
+            method: "POST",
+            url: "http://localhost:5000/chatterbot/api/v1.0/question",
+            data: {question: msg},
             success: function (result) {
-                console.log(result);
-                return app.bot_post("Wrong syntax ''gif me keyword''.");
+                if(result.answer === "")
+                    return app.bot_post("Não entendi :'( ");
+                return app.bot_post(result.answer);
             }
         });
     },
     check: function (msg) {
         var keyword;
-        if (msg.substring(0, 6) === "gif me") {
-            keyword = msg.substring(7);
+        if (msg.substring(0, 15) === "manda um gif de") {
+            keyword = msg.substring(16);
             keyword = keyword.replace(/[ ]/g, "+");
             return this.get_gif(keyword);
         } else {

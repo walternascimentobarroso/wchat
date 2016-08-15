@@ -1,35 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <aiml version="1.0.1" encoding="UTF-8">
 <!-- basic_chat.aiml -->
+    <category>
+        <pattern>EU ME CHAMO *</pattern>
+        <template>Olá <think><set name="username"><star/></set></think></template>
+    </category>
 
     <category>
-        <pattern>HELLO</pattern>
+        <pattern>OI</pattern>
         <template>
-            Well, hello!
+            <random>
+                <li>Oi <get name="username"/>.</li>
+                <li>Olá <get name="username"/>.</li>
+                <li>Olá, como esta?</li>
+                <li>Olá, como vai você?</li>
+                <li>Oi, como esta?</li>
+                <li>Oi, como vai você?</li>
+            </random>
         </template>
+    </category>
+
+    <category>
+        <pattern>OI *</pattern>
+        <template><srai>OI</srai></template>
     </category>
     
     <category>
-        <pattern>WHAT ARE YOU</pattern>
-        <template>
-            I'm a bot, silly!
-        </template>
+        <pattern>OLA</pattern>
+        <template><srai>OI</srai></template>
+    </category>
+
+    <category>
+        <pattern>OLA *</pattern>
+        <template><srai>OI</srai></template>
+    </category>
+
+    <category>
+        <pattern>OLÁ</pattern>
+        <template><srai>OI</srai></template>
+    </category>
+
+    <category>
+        <pattern>OLÁ *</pattern>
+        <template><srai>OI</srai></template>
     </category>
     
-	<category>
-		<pattern>ONE TIME I *</pattern>
-		<template>
-		    <random>
-		        <li>Go on.</li>
-		        <li>How old are you?</li>
-		        <li>Be more specific.</li>
-		        <li>I did not know that.</li>
-		        <li>Are you telling the truth?</li>
-		        <li>I don't know what that means.</li>
-		        <li>Try to tell me that another way.</li>
-		        <li>Are you talking about an animal, vegetable or mineral?</li>
-		        <li>What is it?</li>
-		    </random>
-		</template>
-	</category>
+    <category>
+        <pattern>* TUDO BEM *</pattern>
+        <template>
+            <random>
+                <li>Tudo em ordem.</li>
+                <li>Muito bem, obrigado.</li>
+                <li>Eu estou bem.</li>
+                <li>Estou sim</li>
+                <li>Muito bem e você?</li>
+                <li>Tudo legal.</li>
+            </random>
+        </template>
+    </category>
 
+    <category>
+        <pattern>UMA * É UMA *</pattern>
+        <template>Quando uma <star index="1"/> não é uma <star index="2"/>?</template>
+    </category>
+
+    <category>
+        <pattern>QUEM É ALBERT EINSTEIN</pattern>
+        <template>Albert Einstein foi um fisico.</template>
+    </category>
+
+    <category>
+        <pattern>QUEM É ISAAC NEWTON</pattern>
+        <template>Isaac Newton foi um fisico e matematico.</template>
+    </category>
+
+    <category>
+        <pattern>VOCÊ SABE QUEM FOI *</pattern>
+        <template>
+            <srai>QUEM É <star/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>COMO VOCE ESTA *</pattern>
+        <template>
+            <think><set name="state">feliz</set></think>
+            <condition name="state" value="feliz">Eu estou feliz!</condition>
+            <condition name="state" value="triste">Eu estou triste!</condition>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>FILMES</pattern>
+        <template>Gosta de comedia</template>
+    </category>
+
+    <category>
+        <pattern>SIM</pattern>
+        <that>Gosta de comedia</that>
+        <template>Legal, Eu tambem gosto.</template>
+    </category>
+
+    <category>
+        <pattern>NÃO</pattern>
+        <that>Gosta de comedia</that>
+        <template>Ok! Mas eu gosto muito de comedia.</template>
+    </category>
+
+    <category>
+        <pattern>LET DISCUSS MOVIES</pattern>
+        <template>Yes <set name="topic">movies</set></template>  
+    </category>
+    <topic name="movies">
+        <category>
+            <pattern>WHAT ABOUT MOVIES</pattern>
+            <template>Do you like comedy movies</template>  
+        </category>
+        <category>
+            <pattern>YES</pattern>
+            <that>Do you like comedy movies</that>
+            <template>Nice, I like comedy movies too.</template>
+        </category>
+        <category>
+            <pattern>NO</pattern>
+            <that>Do you like comedy movies</that>
+            <template>Ok! But I like comedy movies.</template>
+        </category>
+    </topic>
 </aiml>

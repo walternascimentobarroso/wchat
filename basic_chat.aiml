@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aiml version="1.0.1" encoding="UTF-8">
-<!-- basic_chat.aiml -->
+    <!-- basic_chat.aiml -->
     <category>
         <pattern>EU ME CHAMO *</pattern>
-        <template>Olá <think><set name="username"><star/></set></think></template>
+        <template>Olá <think>
+                <set name="username">
+                    <star/>
+                </set>
+            </think>
+        </template>
     </category>
 
     <category>
@@ -22,27 +27,37 @@
 
     <category>
         <pattern>OI *</pattern>
-        <template><srai>OI</srai></template>
+        <template>
+            <srai>OI</srai>
+        </template>
     </category>
     
     <category>
         <pattern>OLA</pattern>
-        <template><srai>OI</srai></template>
+        <template>
+            <srai>OI</srai>
+        </template>
     </category>
 
     <category>
         <pattern>OLA *</pattern>
-        <template><srai>OI</srai></template>
+        <template>
+            <srai>OI</srai>
+        </template>
     </category>
 
     <category>
         <pattern>OLÁ</pattern>
-        <template><srai>OI</srai></template>
+        <template>
+            <srai>OI</srai>
+        </template>
     </category>
 
     <category>
         <pattern>OLÁ *</pattern>
-        <template><srai>OI</srai></template>
+        <template>
+            <srai>OI</srai>
+        </template>
     </category>
     
     <category>
@@ -84,7 +99,9 @@
     <category>
         <pattern>COMO VOCE ESTA *</pattern>
         <template>
-            <think><set name="state">feliz</set></think>
+            <think>
+                <set name="state">feliz</set>
+            </think>
             <condition name="state" value="feliz">Eu estou feliz!</condition>
             <condition name="state" value="triste">Eu estou triste!</condition>
         </template>

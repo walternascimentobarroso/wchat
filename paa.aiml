@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0.1" encoding="UTF-8">
+    <category>
+        <pattern>O QUE E PAA</pattern>
+        <template>
+            PAA é um acronimo para Projeto e Analise de Algoritmo.
+        </template>
+    </category>
+</aiml>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0.1" encoding="UTF-8">
+    <category>
+        <pattern>QUEM FOI HERCULES</pattern>
+        <template>
+            Hércules é o nome em latim dado pelos antigos romanos ao herói
+            da mitologia grega Héracles, filho de Zeus (Júpiter para os romanos) 
+            e da mortal Alcmena.
+        </template>
+    </category>
+</aiml>

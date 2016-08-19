@@ -126,6 +126,18 @@
     </category>
 
     <category>
+        <pattern>TCHAU *</pattern>
+        <template>
+            <random>
+                <li>Até mais.</li>
+                <li>Tchau.</li>
+                <li>Até logo.</li>
+                <li>Tchau, até.</li>
+            </random>
+        </template>
+    </category>
+
+    <category>
         <pattern>LET DISCUSS MOVIES</pattern>
         <template>Yes <set name="topic">movies</set></template>  
     </category>

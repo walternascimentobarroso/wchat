@@ -6,4 +6,11 @@
             PAA é um acronimo para Projeto e Analise de Algoritmo.
         </template>
     </category>
+    <category>
+        <pattern>QUAIS SÃO OS ALGORITMOS PARA O CAMINHO MINIMO</pattern>
+        <template>
+            os mais conhecidos são:
+            Algoritmo de Dijkstra, Algoritmo de Bellman-Ford, Algoritmo A*, Algoritmo de Floyd-Warshall e o Algoritmo de Johnson    
+        </template>
+    </category>
 </aiml>

@@ -8,4 +8,58 @@
             e da mortal Alcmena.
         </template>
     </category>
+    
+    <category>
+        <pattern>* QUEM FOI HERCULES</pattern>
+        <template>
+            <srai>QUEM FOI HERCULES</srai>
+        </template>
+    </category>
+    
+        
+    <category>
+        <pattern>* QUEM FOI HÉRCULES</pattern>
+        <template>
+            <srai>QUEM FOI HERCULES</srai>
+        </template>
+    </category>
+    
+        
+    <category>
+        <pattern>QUEM FOI HÉRCULES</pattern>
+        <template>
+            <srai>QUEM FOI HERCULES</srai>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>QUEM FOI CERBERO</pattern>
+        <template>
+            Cérbero na mitologia grega, era um monstruoso cão de três cabeças que 
+            guardava a entrada do mundo inferior, o reino subterrâneo dos mortos, 
+            deixando as almas entrarem, mas jamais saírem e despedaçando os mortais
+            que por lá se aventurassem.
+        </template>
+    </category>
+        
+    <category>
+        <pattern>* QUEM FOI CÉRBERO</pattern>
+        <template>
+            <srai>QUEM FOI CERBERO</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>* QUEM FOI CERBERO</pattern>
+        <template>
+            <srai>QUEM FOI CERBERO</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>* QUEM FOI CÉRBERO</pattern>
+        <template>
+            <srai>QUEM FOI CERBERO</srai>
+        </template>
+    </category>
 </aiml>

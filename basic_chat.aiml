@@ -3,11 +3,23 @@
     <!-- basic_chat.aiml -->
     <category>
         <pattern>EU ME CHAMO *</pattern>
-        <template>Olá <think>
-                <set name="username">
-                    <star/>
-                </set>
-            </think>
+        <template>
+            <random>
+                <li>
+                    Olá <think>
+                        <set name="username">
+                            <star/>
+                        </set>
+                    </think>
+                </li>
+                <li>
+                    Prazer <think>
+                        <set name="username">
+                            <star/>
+                        </set>
+                    </think>
+                </li>
+            </random>
         </template>
     </category>
 
@@ -61,7 +73,7 @@
     </category>
     
     <category>
-        <pattern>* TUDO BEM *</pattern>
+        <pattern>TUDO BEM</pattern>
         <template>
             <random>
                 <li>Tudo em ordem.</li>
@@ -71,6 +83,25 @@
                 <li>Muito bem e você?</li>
                 <li>Tudo legal.</li>
             </random>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>QUAL O SEU NOME</pattern>
+        <template>
+            <random>
+                <li>Eu me Chamo Lilith.</li>
+                <li>Sou Lilith, prazer.</li>
+                <li>Me chamam de Lilith.</li>
+                <li>Lilith e o seu?</li>
+            </random>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>* TUDO BEM *</pattern>
+        <template>
+            <srai>TUDO BEM</srai>
         </template>
     </category>
 

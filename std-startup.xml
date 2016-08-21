@@ -4,9 +4,7 @@
         <template>
             <learn>basic_chat.aiml</learn>
             <learn>mitologia.aiml</learn>
-			<learn>paa.aiml</learn>
+            <learn>paa.aiml</learn>
         </template>
-        
     </category>
-
 </aiml>

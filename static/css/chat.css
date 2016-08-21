@@ -83,7 +83,7 @@ body {
 }
 
 .chat .messages .message .bot:before {
-	content: "Pandora:";
+	content: "LilithBot:";
 	background-color: #3498db;
 	left: 10px;
 }

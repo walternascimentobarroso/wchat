@@ -157,7 +157,7 @@
     </category>
 
     <category>
-        <pattern>TCHAU *</pattern>
+        <pattern>ADEUS</pattern>
         <template>
             <random>
                 <li>Até mais.</li>
@@ -165,6 +165,13 @@
                 <li>Até logo.</li>
                 <li>Tchau, até.</li>
             </random>
+        </template>
+    </category>
+
+    <category>
+        <pattern>TCHAU *</pattern>
+        <template>
+            <srai>ADEUS</srai>
         </template>
     </category>
 

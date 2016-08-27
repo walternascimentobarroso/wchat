@@ -176,6 +176,20 @@
     </category>
 
     <category>
+        <pattern>TCHAU</pattern>
+        <template>
+            <srai>ADEUS</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>ATE LOGO *</pattern>
+        <template>
+            <srai>ADEUS</srai>
+        </template>
+    </category>
+
+    <category>
         <pattern>LET DISCUSS MOVIES</pattern>
         <template>Yes <set name="topic">movies</set></template>  
     </category>

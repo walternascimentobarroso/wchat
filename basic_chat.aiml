@@ -97,6 +97,28 @@
             </random>
         </template>
     </category>
+
+    <category>
+        <pattern>QUAL O SEU NOME *</pattern>
+      	<template>
+            <srai>QUAL O SEU NOME</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>COMO VOCE SE CHAMA *</pattern>
+      	<template>
+            <srai>QUAL O SEU NOME</srai>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>COMO VOCÊ SE CHAMA *</pattern>
+      	<template>
+            <srai>QUAL O SEU NOME</srai>
+        </template>
+    </category>
     
     <category>
         <pattern>* TUDO BEM *</pattern>

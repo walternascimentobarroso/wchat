@@ -13,7 +13,28 @@
             <srai>O QUE E PAA</srai>
         </template>
     </category>
-    
+
+    <category>
+        <pattern>O QUE É PAA *</pattern>
+        <template>
+            <srai>O QUE E PAA</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>O QUE SERIA PAA</pattern>
+        <template>
+            <srai>O QUE E PAA</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>O QUE SERIA PAA *</pattern>
+        <template>
+            <srai>O QUE E PAA</srai>
+        </template>
+    </category>    
+
     <category>
         <pattern>QUAIS SÃO OS ALGORITMOS PARA O CAMINHO MÍNIMO</pattern>
         <template>
@@ -21,4 +42,6 @@
             Algoritmo de Dijkstra, Algoritmo de Bellman-Ford, Algoritmo A*, Algoritmo de Floyd-Warshall e o Algoritmo de Johnson    
         </template>
     </category>
+
+
 </aiml>

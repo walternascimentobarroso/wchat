@@ -9,6 +9,8 @@ sudo apt-get install python-aiml
 
 ## TODO
 Bot telegram
+Bot Slack
+criar função que corriga escrita ex.: vc para você, voce para você e etc
 Mensagens por voz
 Aplicativo Multiplataforma
  - Android

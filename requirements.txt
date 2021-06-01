@@ -90,7 +90,7 @@ Twisted-Core==13.2.0
 Twisted-Names==13.2.0
 Twisted-Web==13.2.0
 twx.botapi==2.1.0
-urllib3==1.7.1
+urllib3==1.26.5
 uTidylib==0.2
 virtualenv==1.11.4
 websocket-client==0.37.0

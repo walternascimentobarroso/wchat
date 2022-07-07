@@ -75,7 +75,7 @@ pytz==2016.6.1
 pyxdg==0.25
 PyYAML==3.11
 reportlab==3.0
-requests==2.2.1
+requests==2.20.0
 sessioninstaller==0.0.0
 six==1.10.0
 slabot==0.2.1

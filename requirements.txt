@@ -54,7 +54,7 @@ pbr==1.10.0
 pexpect==3.1
 Pillow==2.3.0
 piston-mini-client==0.7.5
-protobuf==2.5.0
+protobuf==3.18.3
 PyAIML==0.8.6
 pycrypto==2.6.1
 pycups==1.9.66

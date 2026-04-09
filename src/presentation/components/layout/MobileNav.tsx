@@ -3,17 +3,15 @@
 import { MessageSquare, Plus, Moon, Sun } from 'lucide-react'
 import { useChatStore } from '@/presentation/state/chatStore'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
 
 export function MobileNav() {
   const { createChat } = useChatStore()
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const { theme, resolvedTheme, setTheme } = useTheme()
 
-  useEffect(() => { setMounted(true) }, [])
+  const isDark = (theme === 'system' ? resolvedTheme : theme) === 'dark'
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden glass border-t border-white/20 dark:border-violet-500/10 px-6 py-2 flex items-center justify-around">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden glass border-t border-white/20 dark:border-violet-500/10 px-6 py-2 flex items-center justify-around" suppressHydrationWarning>
       <button className="flex flex-col items-center gap-1 p-2 text-violet-600 dark:text-violet-400">
         <MessageSquare className="w-5 h-5" />
         <span className="text-[10px] font-medium">Chats</span>
@@ -26,18 +24,16 @@ export function MobileNav() {
         <Plus className="w-5 h-5" />
       </button>
 
-      {mounted && (
-        <button
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          className="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400"
-        >
-          {theme === 'dark'
-            ? <Sun className="w-5 h-5 text-amber-400" />
-            : <Moon className="w-5 h-5 text-violet-500" />
-          }
-          <span className="text-[10px] font-medium">Theme</span>
-        </button>
-      )}
+      <button
+        onClick={() => setTheme(isDark ? 'light' : 'dark')}
+        className="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400"
+      >
+        {isDark
+          ? <Sun className="w-5 h-5 text-amber-400" />
+          : <Moon className="w-5 h-5 text-violet-500" />
+        }
+        <span className="text-[10px] font-medium">Theme</span>
+      </button>
     </nav>
   )
 }

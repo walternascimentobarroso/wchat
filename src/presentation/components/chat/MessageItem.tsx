@@ -17,10 +17,10 @@ export function MessageItem({ message }: MessageItemProps) {
     <div className={`flex gap-3 animate-in fade-in slide-in-from-bottom-2 duration-300 ${isUser ? 'flex-row-reverse' : ''}`}>
       {/* Avatar */}
       <div
-        className={`flex-shrink-0 w-8 h-8 rounded-2xl flex items-center justify-center shadow-sm ${
+        className={`flex-shrink-0 w-8 h-8 rounded-2xl flex items-center justify-center ${
           isUser
-            ? 'bg-gradient-to-br from-violet-600 to-purple-700 dark:from-violet-500 dark:to-purple-600 shadow-violet-500/20'
-            : 'bg-gradient-to-br from-indigo-500/10 to-violet-500/10 dark:from-indigo-400/15 dark:to-violet-400/15 backdrop-blur-sm border border-violet-200/40 dark:border-violet-500/15'
+            ? 'bg-gradient-to-br from-violet-600 to-purple-700 dark:from-violet-500 dark:to-purple-600 shadow-md shadow-violet-500/25'
+            : 'glass-chip'
         }`}
       >
         {isUser ? (
@@ -33,10 +33,10 @@ export function MessageItem({ message }: MessageItemProps) {
       {/* Content */}
       <div className={`flex-1 max-w-sm sm:max-w-md lg:max-w-2xl ${isUser ? 'items-end flex flex-col' : ''}`}>
         <div
-          className={`inline-block rounded-2xl px-4 py-3 shadow-sm text-sm leading-relaxed ${
+          className={`inline-block rounded-2xl px-4 py-3 text-sm leading-relaxed ${
             isUser
-              ? 'bg-gradient-to-br from-violet-600 to-purple-700 dark:from-violet-600 dark:to-purple-700 text-white rounded-tr-sm shadow-violet-500/20'
-              : 'bg-white/75 dark:bg-white/5 backdrop-blur-sm border border-white/50 dark:border-violet-500/12 text-slate-800 dark:text-slate-100 rounded-tl-sm'
+              ? 'bg-gradient-to-br from-violet-600 to-purple-700 dark:from-violet-600 dark:to-purple-700 text-white rounded-tr-sm shadow-md shadow-violet-500/20'
+              : 'glass-surface rounded-tl-sm text-slate-800 dark:text-slate-100'
           }`}
         >
           <MarkdownRenderer content={message.content} />

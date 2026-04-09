@@ -11,13 +11,13 @@ const suggestions = [
 export function EmptyState() {
   return (
     <div className="flex flex-col items-center justify-center gap-8 text-center px-4 max-w-sm mx-auto w-full">
-      {/* Orb */}
+      {/* Glowing orb */}
       <div className="relative">
         <div className="w-24 h-24 rounded-full bg-gradient-to-br from-violet-400 via-purple-500 to-indigo-600 dark:from-violet-500 dark:via-purple-600 dark:to-indigo-700 flex items-center justify-center shadow-2xl shadow-violet-500/40">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 to-transparent" />
           <Sparkles className="w-10 h-10 text-white relative z-10" />
         </div>
-        <div className="absolute inset-0 rounded-full bg-violet-500/20 blur-xl scale-150 -z-10" />
+        <div className="absolute inset-0 rounded-full bg-violet-500/25 blur-2xl scale-150 -z-10" />
       </div>
 
       <div className="space-y-2">
@@ -33,7 +33,7 @@ export function EmptyState() {
         {suggestions.map(({ icon: Icon, label, desc }) => (
           <div
             key={label}
-            className="glass-subtle rounded-2xl px-4 py-3 text-left flex items-center gap-3 cursor-default hover:bg-white/60 dark:hover:bg-violet-500/8 transition-all duration-200 hover:scale-[1.01]"
+            className="glass-chip rounded-2xl px-4 py-3 text-left flex items-center gap-3 cursor-default hover:scale-[1.02] transition-all duration-200"
           >
             <div className="w-8 h-8 rounded-xl bg-violet-100 dark:bg-violet-500/15 flex items-center justify-center flex-shrink-0">
               <Icon className="w-4 h-4 text-violet-600 dark:text-violet-400" />

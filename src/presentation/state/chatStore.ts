@@ -3,7 +3,7 @@ import { Chat } from '@/domains/chat/entities/Chat'
 import { Message } from '@/domains/chat/entities/Message'
 import { ChatService } from '@/domains/chat/services/ChatService'
 import { LocalStorageChatRepository } from '@/infrastructure/storage/LocalStorageChatRepository'
-import type { ChatEntity, MessageEntity } from '@/domains/chat/types'
+import type { MessageEntity } from '@/domains/chat/types'
 
 const repository = new LocalStorageChatRepository()
 const chatService = new ChatService(repository)
@@ -89,7 +89,7 @@ export const useChatStore = create<ChatStore>((set, get) => ({
   },
 
   sendMessage: async (content: string) => {
-    const { selectedChatId, chats } = get()
+    const { selectedChatId } = get()
 
     if (!selectedChatId) {
       console.warn('No chat selected')
@@ -122,7 +122,7 @@ export const useChatStore = create<ChatStore>((set, get) => ({
 
       // Persist messages to storage
       const { messages } = get()
-      const messagesToPersist = Object.entries(messages).reduce(
+      void Object.entries(messages).reduce(
         (acc, [, msgs]) => [...acc, ...msgs.map((m) => m.toDTO() as MessageEntity)],
         [] as MessageEntity[]
       )

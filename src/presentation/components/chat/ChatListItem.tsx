@@ -3,6 +3,7 @@
 import { Chat } from '@/domains/chat/entities/Chat'
 import { useChatStore } from '@/presentation/state/chatStore'
 import { Button } from '@/components/ui/button'
+import { MessageCircle } from 'lucide-react'
 
 interface ChatListItemProps {
   chat: Chat
@@ -14,15 +15,16 @@ export function ChatListItem({ chat, isSelected }: ChatListItemProps) {
 
   return (
     <Button
-      variant={isSelected ? 'default' : 'ghost'}
+      variant="ghost"
       onClick={() => selectChat(chat.id)}
-      className={`w-full justify-start text-left truncate ${
+      className={`w-full justify-start text-left truncate rounded-xl transition-all duration-200 gap-2.5 ${
         isSelected
-          ? 'bg-blue-600 hover:bg-blue-700 text-white'
-          : 'text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
+          ? 'bg-gradient-to-r from-violet-600/90 to-purple-600/90 hover:from-violet-600 hover:to-purple-600 text-white shadow-md shadow-violet-500/20'
+          : 'text-slate-600 dark:text-slate-400 hover:bg-violet-50 dark:hover:bg-violet-500/8 hover:text-violet-700 dark:hover:text-violet-300'
       }`}
     >
-      <span className="truncate">{chat.title}</span>
+      <MessageCircle className={`w-3.5 h-3.5 flex-shrink-0 ${isSelected ? 'text-white/80' : 'text-slate-400 dark:text-slate-500'}`} />
+      <span className="truncate text-sm">{chat.title}</span>
     </Button>
   )
 }

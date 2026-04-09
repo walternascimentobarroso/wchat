@@ -11,7 +11,7 @@ export function ChatContainer() {
 
   if (!selectedChatId) {
     return (
-      <div className="flex items-center justify-center h-full">
+      <div className="flex items-center justify-center h-full bg-transparent">
         <EmptyState />
       </div>
     )

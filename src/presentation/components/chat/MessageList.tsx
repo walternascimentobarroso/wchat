@@ -15,9 +15,9 @@ export function MessageList({ messages }: MessageListProps) {
 
   return (
     <AutoScrollContainer dependency={messages}>
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto px-4 py-6 space-y-5 max-w-3xl mx-auto w-full">
         {messages.length === 0 && !isTyping && (
-          <div className="h-full flex items-center justify-center text-slate-400">
+          <div className="h-full flex items-center justify-center text-sm text-slate-400 dark:text-slate-600">
             No messages yet. Start the conversation!
           </div>
         )}

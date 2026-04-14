@@ -4,7 +4,6 @@ import { Message } from '../entities/Message'
 import * as createChatsUC from '../use-cases/createChat'
 import * as deleteChatsUC from '../use-cases/deleteChat'
 import * as sendMessageUC from '../use-cases/sendMessage'
-import * as generateFakeResponseUC from '../use-cases/generateFakeResponse'
 import * as loadChatsUC from '../use-cases/loadChats'
 import * as persistChatsUC from '../use-cases/persistChats'
 
@@ -21,10 +20,6 @@ export class ChatService {
 
   sendMessage(chatId: string, content: string): Message {
     return sendMessageUC.sendMessage(chatId, content)
-  }
-
-  async generateFakeResponse(chatId: string, userMessage: string): Promise<Message> {
-    return generateFakeResponseUC.generateFakeResponse(chatId, userMessage)
   }
 
   async loadChats(): Promise<Chat[]> {

@@ -1,9 +1,11 @@
 import { create } from 'zustand'
 import { Chat } from '@/domains/chat/entities/Chat'
 import { Message } from '@/domains/chat/entities/Message'
+import { MessageRole } from '@/domains/chat/types'
 import { ChatService } from '@/domains/chat/services/ChatService'
 import { LocalStorageChatRepository } from '@/infrastructure/storage/LocalStorageChatRepository'
-import type { MessageEntity } from '@/domains/chat/types'
+import { streamChatMessage } from '@/infrastructure/api/chatApi'
+import { generateId } from '@/shared/utils/id'
 
 const repository = new LocalStorageChatRepository()
 const chatService = new ChatService(repository)
@@ -32,14 +34,11 @@ export const useChatStore = create<ChatStore>((set, get) => ({
   loadChats: async () => {
     try {
       const chats = await chatService.loadChats()
-      set({ chats })
-
-      // Initialize messages map
       const messages: Record<string, Message[]> = {}
       for (const chat of chats) {
         messages[chat.id] = []
       }
-      set({ messages })
+      set({ chats, messages })
     } catch (error) {
       console.error('Failed to load chats:', error)
     }
@@ -90,46 +89,48 @@ export const useChatStore = create<ChatStore>((set, get) => ({
 
   sendMessage: async (content: string) => {
     const { selectedChatId } = get()
+    if (!selectedChatId) return
 
-    if (!selectedChatId) {
-      console.warn('No chat selected')
-      return
-    }
-
-    // Create user message
     const userMessage = chatService.sendMessage(selectedChatId, content)
 
-    // Add user message to messages
     set((state) => ({
       messages: {
         ...state.messages,
-        [selectedChatId]: [...(state.messages[selectedChatId] || []), userMessage],
+        [selectedChatId]: [...(state.messages[selectedChatId] ?? []), userMessage],
       },
       isTyping: true,
     }))
 
-    // Generate fake assistant response
+    const assistantMessage = new Message(
+      generateId(),
+      selectedChatId,
+      MessageRole.ASSISTANT,
+      '',
+      new Date()
+    )
+
+    set((state) => ({
+      messages: {
+        ...state.messages,
+        [selectedChatId]: [...state.messages[selectedChatId], assistantMessage],
+      },
+    }))
+
     try {
-      const assistantMessage = await chatService.generateFakeResponse(selectedChatId, content)
-
-      set((state) => ({
-        messages: {
-          ...state.messages,
-          [selectedChatId]: [...state.messages[selectedChatId], assistantMessage],
-        },
-        isTyping: false,
-      }))
-
-      // Persist messages to storage
-      const { messages } = get()
-      void Object.entries(messages).reduce(
-        (acc, [, msgs]) => [...acc, ...msgs.map((m) => m.toDTO() as MessageEntity)],
-        [] as MessageEntity[]
-      )
-      // Note: For now, we're only persisting chats, not individual messages
-      // This could be extended in the future
+      await streamChatMessage(selectedChatId, content, (token) => {
+        set((state) => {
+          const chatMessages = state.messages[selectedChatId]
+          const updated = chatMessages.map((m) =>
+            m.id === assistantMessage.id
+              ? new Message(m.id, m.chatId, m.role, m.content + token, m.createdAt)
+              : m
+          )
+          return { messages: { ...state.messages, [selectedChatId]: updated } }
+        })
+      })
     } catch (error) {
-      console.error('Failed to generate response:', error)
+      console.error('Failed to stream response:', error)
+    } finally {
       set({ isTyping: false })
     }
   },

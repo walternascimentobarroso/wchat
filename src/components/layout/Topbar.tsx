@@ -16,13 +16,22 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import { PROVIDERS, type Provider } from '@/features/chat/services/chatService'
 
 interface TopbarProps {
   onClear: () => void
   canClear: boolean
+  provider: Provider
+  onProviderChange: (provider: Provider) => void
 }
 
-export function Topbar({ onClear, canClear }: TopbarProps) {
+export function Topbar({ onClear, canClear, provider, onProviderChange }: TopbarProps) {
   const t = useTranslations()
   const { resolvedTheme, setTheme } = useTheme()
 
@@ -31,6 +40,24 @@ export function Topbar({ onClear, canClear }: TopbarProps) {
       <Image src="/icon.svg" alt="" width={28} height={28} />
       <span className="font-semibold">{t('app.title')}</span>
       <div className="ml-auto flex items-center gap-1">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="sm" aria-label={t('chat.provider')}>
+              <span className="text-xs font-semibold capitalize">{provider}</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {PROVIDERS.map((option) => (
+              <DropdownMenuItem
+                key={option}
+                onClick={() => onProviderChange(option)}
+                className={`capitalize ${provider === option ? 'bg-accent' : ''}`}
+              >
+                {option}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
         <Dialog>
           <DialogTrigger asChild>
             <Button variant="ghost" size="sm" disabled={!canClear} className="gap-1.5">

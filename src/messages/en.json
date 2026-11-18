@@ -1,6 +1,10 @@
 {
-  "app": { "title": "WChat" },
-  "theme": { "toggle": "Toggle theme" },
+  "app": {
+    "title": "WChat"
+  },
+  "theme": {
+    "toggle": "Toggle theme"
+  },
   "chat": {
     "greeting": "Hi! How can I help?",
     "placeholder": "Type a message…",
@@ -11,11 +15,7 @@
     "clearDescription": "All messages will be deleted. This cannot be undone.",
     "cancel": "Cancel",
     "confirm": "Clear",
-    "replies": [
-      "Good question! Let me think about it.",
-      "Got it. Can you give me more details?",
-      "Interesting. I'm only a mock, but I like the idea.",
-      "I agree. Is there anything else I can help with?"
-    ]
+    "error": "Something went wrong. Please try again.",
+    "provider": "Model"
   }
 }

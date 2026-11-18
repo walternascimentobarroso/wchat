@@ -1,9 +1,17 @@
-const REPLY_DELAY_MS = 1200
+export const PROVIDERS = ['groq', 'gemini'] as const
+export type Provider = (typeof PROVIDERS)[number]
 
-// shortcut: mock that ignores the text and picks a canned reply; swap for a real API call later.
-async function send(_text: string, replies: string[]): Promise<string> {
-  await new Promise((resolve) => setTimeout(resolve, REPLY_DELAY_MS))
-  return replies[Math.floor(Math.random() * replies.length)]
+type ChatMessage = { role: 'user' | 'assistant'; content: string }
+
+async function send(provider: Provider, messages: ChatMessage[]): Promise<string> {
+  const response = await fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ provider, messages }),
+  })
+  if (!response.ok) throw new Error(`Chat request failed: ${response.status}`)
+  const { reply } = await response.json()
+  return reply
 }
 
 export const chatService = { send }

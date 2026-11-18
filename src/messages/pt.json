@@ -1,6 +1,10 @@
 {
-  "app": { "title": "WChat" },
-  "theme": { "toggle": "Alternar tema" },
+  "app": {
+    "title": "WChat"
+  },
+  "theme": {
+    "toggle": "Alternar tema"
+  },
   "chat": {
     "greeting": "Olá! Em que posso ajudar?",
     "placeholder": "Escreve uma mensagem…",
@@ -11,11 +15,7 @@
     "clearDescription": "Todas as mensagens serão apagadas. Esta ação não pode ser desfeita.",
     "cancel": "Cancelar",
     "confirm": "Limpar",
-    "replies": [
-      "Boa pergunta! Deixa-me pensar nisso.",
-      "Entendido. Podes dar-me mais detalhes?",
-      "Interessante. Sou só um mock, mas gosto da ideia.",
-      "Concordo. Há mais alguma coisa em que possa ajudar?"
-    ]
+    "error": "Algo correu mal. Tenta novamente.",
+    "provider": "Modelo"
   }
 }

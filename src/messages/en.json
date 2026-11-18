@@ -16,6 +16,8 @@
     "cancel": "Cancel",
     "confirm": "Clear",
     "error": "Something went wrong. Please try again.",
-    "provider": "Model"
+    "provider": "Model",
+    "copy": "Copy",
+    "copied": "Copied"
   }
 }

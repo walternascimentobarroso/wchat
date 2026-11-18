@@ -1,8 +1,11 @@
 'use client'
 
-import { Bot } from 'lucide-react'
+import { Bot, Check, Copy } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import type { Message } from '../hooks/useConversation'
@@ -21,20 +24,49 @@ function AssistantAvatar() {
   )
 }
 
+function CopyButton({ text }: { text: string }) {
+  const t = useTranslations('chat')
+  const [copied, setCopied] = useState(false)
+
+  async function copy() {
+    await navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  return (
+    <Button
+      variant="ghost"
+      size="icon"
+      className="size-7 opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100"
+      onClick={copy}
+      aria-label={copied ? t('copied') : t('copy')}
+      title={copied ? t('copied') : t('copy')}
+    >
+      {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
+    </Button>
+  )
+}
+
 function MessageBubble({ message }: { message: Message }) {
   const isUser = message.role === 'user'
 
   return (
-    <div className={cn('flex gap-2', isUser ? 'justify-end' : 'justify-start')}>
+    <div className={cn('group flex gap-2', isUser ? 'justify-end' : 'justify-start')}>
       {!isUser && <AssistantAvatar />}
-      <p
-        className={cn(
-          'max-w-[85%] whitespace-pre-wrap break-words rounded-2xl px-4 py-2 text-sm',
-          isUser ? 'bg-primary text-primary-foreground' : 'bg-muted'
-        )}
-      >
-        {message.text}
-      </p>
+      <div className={cn('flex max-w-[85%] flex-col gap-1', isUser ? 'items-end' : 'items-start')}>
+        <div
+          className={cn(
+            'max-w-full break-words rounded-2xl px-4 py-2 text-sm',
+            isUser
+              ? 'whitespace-pre-wrap bg-primary text-primary-foreground'
+              : 'prose prose-sm dark:prose-invert bg-muted prose-pre:overflow-x-auto'
+          )}
+        >
+          {isUser ? message.text : <Markdown remarkPlugins={[remarkGfm]}>{message.text}</Markdown>}
+        </div>
+        <CopyButton text={message.text} />
+      </div>
     </div>
   )
 }

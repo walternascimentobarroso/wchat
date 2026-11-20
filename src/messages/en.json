@@ -19,5 +19,32 @@
     "provider": "Model",
     "copy": "Copy",
     "copied": "Copied"
+  },
+  "auth": {
+    "heroLine1": "Chat with AI,",
+    "heroHighlight": "your way,",
+    "heroLine2": "in any language.",
+    "features": {
+      "models": "Switch between AI models",
+      "history": "Keep your conversations",
+      "languages": "English and Portuguese"
+    },
+    "welcomeBack": "Welcome back",
+    "loginSubtitle": "Sign in to continue chatting",
+    "createAccount": "Create your account",
+    "registerSubtitle": "Start chatting in seconds",
+    "name": "Name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "rememberMe": "Remember me",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "noAccount": "Don’t have an account?",
+    "hasAccount": "Already have an account?",
+    "passwordMismatch": "Passwords do not match."
   }
 }

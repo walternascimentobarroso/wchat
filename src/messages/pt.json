@@ -19,5 +19,32 @@
     "provider": "Modelo",
     "copy": "Copiar",
     "copied": "Copiado"
+  },
+  "auth": {
+    "heroLine1": "Converse com IA,",
+    "heroHighlight": "do seu jeito,",
+    "heroLine2": "em qualquer idioma.",
+    "features": {
+      "models": "Alterne entre modelos de IA",
+      "history": "Guarde as suas conversas",
+      "languages": "Inglês e português"
+    },
+    "welcomeBack": "Bem-vindo de volta",
+    "loginSubtitle": "Entre para continuar a conversar",
+    "createAccount": "Crie a sua conta",
+    "registerSubtitle": "Comece a conversar em segundos",
+    "name": "Nome",
+    "email": "Email",
+    "emailPlaceholder": "voce@exemplo.com",
+    "password": "Senha",
+    "confirmPassword": "Confirmar senha",
+    "showPassword": "Mostrar senha",
+    "hidePassword": "Ocultar senha",
+    "rememberMe": "Lembrar-me",
+    "signIn": "Entrar",
+    "signUp": "Cadastrar",
+    "noAccount": "Não tem conta?",
+    "hasAccount": "Já tem conta?",
+    "passwordMismatch": "As senhas não coincidem."
   }
 }

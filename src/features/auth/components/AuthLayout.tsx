@@ -49,7 +49,7 @@ export function AuthLayout({ title, subtitle, children }: AuthLayoutProps) {
         <div className="login-enter grid w-full max-w-5xl overflow-hidden glass rounded-2xl lg:grid-cols-2">
           <aside className="relative hidden min-h-[600px] lg:block">
             <Image
-              src="/images/login-hero.webp"
+              src="/images/chat-hero.webp"
               alt=""
               fill
               priority

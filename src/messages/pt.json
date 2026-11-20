@@ -45,6 +45,10 @@
     "signUp": "Cadastrar",
     "noAccount": "Não tem conta?",
     "hasAccount": "Já tem conta?",
-    "passwordMismatch": "As senhas não coincidem."
+    "passwordMismatch": "As senhas não coincidem.",
+    "invalidCredentials": "Email ou senha inválidos.",
+    "demoTryAs": "ou experimente como",
+    "demoUser": "Usuário de teste",
+    "logout": "Sair"
   }
 }

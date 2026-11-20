@@ -1,6 +1,6 @@
 'use client'
 
-import { Moon, Sun, Trash2 } from 'lucide-react'
+import { LogOut, Moon, Sun, Trash2 } from 'lucide-react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
@@ -22,6 +22,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { useAuth } from '@/features/auth/components/AuthProvider'
 import { PROVIDERS, type Provider } from '@/features/chat/services/chatService'
 
 interface TopbarProps {
@@ -34,6 +35,7 @@ interface TopbarProps {
 export function Topbar({ onClear, canClear, provider, onProviderChange }: TopbarProps) {
   const t = useTranslations()
   const { resolvedTheme, setTheme } = useTheme()
+  const { logout } = useAuth()
 
   return (
     <header className="flex h-[72px] shrink-0 items-center gap-2 border-b px-4 md:px-6">
@@ -98,6 +100,16 @@ export function Topbar({ onClear, canClear, provider, onProviderChange }: Topbar
             aria-hidden="true"
           />
           <span className="sr-only">{t('theme.toggle')}</span>
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={logout}
+          aria-label={t('auth.logout')}
+          title={t('auth.logout')}
+          className="h-10 w-10 rounded-xl"
+        >
+          <LogOut className="h-4 w-4" aria-hidden="true" />
         </Button>
       </div>
     </header>

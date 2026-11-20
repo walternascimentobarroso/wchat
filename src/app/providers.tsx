@@ -2,6 +2,7 @@
 
 import { type AbstractIntlMessages, NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from '@/components/theme/ThemeProvider'
+import { AuthProvider } from '@/features/auth/components/AuthProvider'
 
 export function Providers({
   children,
@@ -15,7 +16,7 @@ export function Providers({
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
       <NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </NextIntlClientProvider>
     </ThemeProvider>
   )

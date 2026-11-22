@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file: .env
+    environment:
+      MCP_URL: http://mcp-mysql:8000/mcp
+    depends_on:
+      - mcp-mysql
+
+  mcp-mysql:
+    build: https://github.com/walternascimentobarroso/database_mcp.git#v1.0.1
+    env_file: .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

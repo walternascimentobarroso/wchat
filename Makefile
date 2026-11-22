@@ -1,4 +1,4 @@
-.PHONY: up dev install build format lint check typecheck clean validate help
+.PHONY: docker up dev install build format lint check typecheck clean validate help
 
 help:
 	@echo "Available commands:"
@@ -10,6 +10,7 @@ help:
 	@echo "  check          - Format, lint and organize imports with Biome"
 	@echo "  typecheck      - Run TypeScript type checking"
 	@echo "  validate       - Run check and typecheck"
+	@echo "  docker         - Build and start web + MySQL MCP (Docker Compose)"
 	@echo "  clean          - Clean build artifacts"
 
 up dev:
@@ -40,3 +41,7 @@ clean:
 validate:
 	$(MAKE) check
 	$(MAKE) typecheck
+
+docker:
+	docker compose up --build -d
+

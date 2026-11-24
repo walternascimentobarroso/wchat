@@ -49,6 +49,24 @@
     "invalidCredentials": "Email ou senha inválidos.",
     "demoTryAs": "ou experimente como",
     "demoUser": "Usuário de teste",
-    "logout": "Sair"
+    "logout": "Sair",
+    "account": "Conta"
+  },
+  "config": {
+    "title": "Configurações",
+    "subtitle": "Preferências do WChat",
+    "host": "Host",
+    "port": "Porta",
+    "user": "Usuário",
+    "password": "Senha",
+    "passwordKept": "Deixe vazio para manter a atual",
+    "database": "Banco de dados",
+    "readOnlyNote": "O acesso é sempre somente leitura.",
+    "save": "Guardar",
+    "saved": "Configuração guardada. O chat já usa a nova conexão.",
+    "error": "Não foi possível guardar. Tenta novamente.",
+    "backToChat": "Voltar ao chat",
+    "databaseSection": "Banco de dados",
+    "databaseSectionHint": "Conexão MySQL usada pelo chat"
   }
 }

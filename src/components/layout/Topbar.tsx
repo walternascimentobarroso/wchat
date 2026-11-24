@@ -1,7 +1,8 @@
 'use client'
 
-import { LogOut, Moon, Sun, Trash2 } from 'lucide-react'
+import { LogOut, Moon, Settings, Sun, Trash2 } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
@@ -20,6 +21,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { useAuth } from '@/features/auth/components/AuthProvider'
@@ -32,10 +35,18 @@ interface TopbarProps {
   onProviderChange: (provider: Provider) => void
 }
 
+function initials(name: string): string {
+  return name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((word) => word[0]?.toUpperCase() ?? '')
+    .join('')
+}
+
 export function Topbar({ onClear, canClear, provider, onProviderChange }: TopbarProps) {
   const t = useTranslations()
   const { resolvedTheme, setTheme } = useTheme()
-  const { logout } = useAuth()
+  const { user, logout } = useAuth()
 
   return (
     <header className="flex h-[72px] shrink-0 items-center gap-2 border-b px-4 md:px-6">
@@ -101,16 +112,39 @@ export function Topbar({ onClear, canClear, provider, onProviderChange }: Topbar
           />
           <span className="sr-only">{t('theme.toggle')}</span>
         </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={logout}
-          aria-label={t('auth.logout')}
-          title={t('auth.logout')}
-          className="h-10 w-10 rounded-xl"
-        >
-          <LogOut className="h-4 w-4" aria-hidden="true" />
-        </Button>
+        {user && (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label={t('auth.account')}
+                className="h-10 w-10 rounded-full"
+              >
+                <span className="flex size-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+                  {initials(user.name)}
+                </span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel className="font-normal">
+                <p className="truncate text-sm font-medium">{user.name}</p>
+                <p className="truncate text-xs text-muted-foreground">{user.email}</p>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link href="/config">
+                  <Settings className="h-4 w-4" aria-hidden="true" />
+                  {t('config.title')}
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={logout}>
+                <LogOut className="h-4 w-4" aria-hidden="true" />
+                {t('auth.logout')}
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
       </div>
     </header>
   )

@@ -6,11 +6,21 @@ services:
     env_file: .env
     environment:
       MCP_URL: http://mcp-mysql:8000/mcp
+      MYSQL_CONFIG_FILE: /config/mysql.json
+    volumes:
+      - db-config:/config
     depends_on:
       - mcp-mysql
 
   mcp-mysql:
-    build: https://github.com/walternascimentobarroso/database_mcp.git#v1.0.1
+    build: https://github.com/walternascimentobarroso/database_mcp.git#v1.1.0
     env_file: .env
+    environment:
+      MYSQL_CONFIG_FILE: /config/mysql.json
+    volumes:
+      - db-config:/config:ro
     extra_hosts:
       - "host.docker.internal:host-gateway"
+
+volumes:
+  db-config:
